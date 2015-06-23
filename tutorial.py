@@ -2,15 +2,26 @@ from Tkinter import *
 
 master = Tk()
 master.wm_title("Calculator") #Makes the title that will appear in the top left
+
+
+Label(master, text="First number:").pack()
+
 e = Entry(master)
 e.pack()
 
-e.focus_set()
+Label(master, text="Second number:").pack()
 
 f = Entry(master)
 f.pack()
 
-f.focus_set()
+Label(master, text="Result:").pack()
+
+v = StringVar()
+Label(master, textvariable=v).pack()
+
+v.set("0")
+
+
 
 def callback():
     zahl1 = int(e.get())
@@ -19,6 +30,8 @@ def callback():
     print zahl2
     print "Result: ",
     print zahl2 + zahl1
+    v.set(str(zahl2 + zahl1))
+    
     
 
 b = Button(master, text="add", width=10, command=callback)
